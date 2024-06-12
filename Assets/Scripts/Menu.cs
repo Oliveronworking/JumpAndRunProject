@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+
+    public GameObject optionsCanvas;
+    public GameObject mainCanvas;
     // Start is called before the first frame update
     public void OnPlayButton()
     {
@@ -16,6 +19,13 @@ public class Menu : MonoBehaviour
     {
         Debug.Log("Quit");
         Application.Quit();
+    }
+
+    public void OnOptionsButton()
+    {
+            optionsCanvas.SetActive(true);
+            mainCanvas.SetActive(false);
+        
     }
 
     void Start()
