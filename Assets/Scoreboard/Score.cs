@@ -17,16 +17,21 @@ public class Score : MonoBehaviour
 
     public bool scoreErweiterung;
 
+    private PlayerController playerControllerScript;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreCount += pointsPerSecond * Time.deltaTime;
+        if (playerControllerScript.gameOver == false) { 
+            scoreCount += pointsPerSecond * Time.deltaTime;
 
-        scoreText.text = "Score: " + Mathf.Round (scoreCount); // Zählt den Score
+            scoreText.text = "Score: " + Mathf.Round (scoreCount); // Zählt den Score
+        }
     }
 }

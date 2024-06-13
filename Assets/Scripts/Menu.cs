@@ -12,7 +12,7 @@ public class Menu : MonoBehaviour
     public void OnPlayButton()
     {
         Debug.Log("Play");
-        SceneManager.LoadScene("Prototype 3");
+        SceneManager.LoadScene(1);
     }
 
     public void OnQuitButton()
