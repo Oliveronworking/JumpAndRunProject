@@ -16,8 +16,12 @@ public class gameOver : MonoBehaviour
     public void restartButton()
     {
         GameOverCanvas.SetActive(false);
+        /*
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
+        */
+        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
     void Start()
     {
