@@ -1668,8 +1668,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8813b816be2af84d8059a9ee1e5c8dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
   volumeSlider: {fileID: 1937588366}
+  ObjectMusic: {fileID: 0}
 --- !u!4 &1551712371
 Transform:
   m_ObjectHideFlags: 0
@@ -2208,6 +2208,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: f147a01ef442b2345a3546109476c690, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f147a01ef442b2345a3546109476c690, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f147a01ef442b2345a3546109476c690, type: 3}
       propertyPath: m_LocalPosition.x

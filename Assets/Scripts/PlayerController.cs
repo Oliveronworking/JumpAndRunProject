@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
-    private Animator playerAnim;
+    public Animator playerAnim;
     private AudioSource playerAudio;
     public ParticleSystem explosionParticle;
     public ParticleSystem dirtParticle;

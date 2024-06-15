@@ -1,28 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class doNotDestroy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private void Awake()
+    void Awake()
     {
+        // Finde alle GameObjects mit dem Tag "GameMusic"
         GameObject[] musicObj = GameObject.FindGameObjectsWithTag("GameMusic");
+
+        // Wenn mehr als ein "GameMusic" GameObject gefunden wird, zerstöre dieses Skript, um Duplikate zu vermeiden.
         if (musicObj.Length > 1)
         {
             Destroy(this.gameObject);
         }
+
+        // Finde alle GameObjects mit dem Tag "Player"
+        GameObject[] playerObj = GameObject.FindGameObjectsWithTag("Player");
+
+        // Wenn mehr als ein "Player" GameObject gefunden wird, zerstöre dieses Skript, um Duplikate zu vermeiden.
+        if (playerObj.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+        // Markiere dieses GameObject (das Skript) als "DontDestroyOnLoad",
+        // damit es beim Szenenwechsel erhalten bleibt.
         DontDestroyOnLoad(this.gameObject);
-    }
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

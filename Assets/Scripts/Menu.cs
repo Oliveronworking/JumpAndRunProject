@@ -8,10 +8,12 @@ public class Menu : MonoBehaviour
 
     public GameObject optionsCanvas;
     public GameObject mainCanvas;
+    public GameObject characktersCanvas;
+    public GameObject Player;
     // Start is called before the first frame update
     public void OnPlayButton()
     {
-        Debug.Log("Play");
+        Player.SetActive(true);
         SceneManager.LoadScene(1);
     }
 
@@ -25,7 +27,13 @@ public class Menu : MonoBehaviour
     {
             optionsCanvas.SetActive(true);
             mainCanvas.SetActive(false);
-        
+    }
+
+    public void OnCharacktersButton()
+    {
+        characktersCanvas.SetActive(true);
+        Player.SetActive(true);
+        mainCanvas.SetActive(false);
     }
 
     void Start()

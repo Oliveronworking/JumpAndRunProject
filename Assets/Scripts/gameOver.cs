@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class gameOver : MonoBehaviour
 {
     public GameObject GameOverCanvas;
+
+    PlayerController playerController;
     // Start is called before the first frame update
 
     public void mainMenuButton()
@@ -16,12 +18,17 @@ public class gameOver : MonoBehaviour
     public void restartButton()
     {
         GameOverCanvas.SetActive(false);
-        /*
+        //playerController.gameOver = false;
+
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
-        */
+
+        
+        //playerController.playerAnim.SetBool("Death_b", true);
+        /*
         SceneManager.LoadScene(0);
         SceneManager.LoadScene(1);
+        */
     }
     void Start()
     {
