@@ -9,22 +9,31 @@ public class SpawnManager : MonoBehaviour
     private float startDelay = 2;
     private float repeatRate = 2;
     private PlayerController playerControllerScript;
-    // Start is called before the first frame update
+
     void Start()
     {
-        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
-        InvokeRepeating("SpawnObstacle", startDelay, repeatRate);
+        // Finde das GameObject mit dem Tag "Player"
+        GameObject playerObject = GameObject.FindWithTag("Player");
+
+        // Überprüfe, ob das GameObject gefunden wurde
+        if (playerObject != null)
+        {
+            // Hole die PlayerController-Komponente des GameObjects
+            playerControllerScript = playerObject.GetComponent<PlayerController>();
+
+            // Starte das periodische Erzeugen von Hindernissen
+            InvokeRepeating("SpawnObstacle", startDelay, repeatRate);
+        }
+        else
+        {
+            Debug.LogError("GameObject with tag 'Player' not found.");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void SpawnObstacle()
     {
-        
-    }
-
-    void SpawnObstacle ()
-    {
-        if(playerControllerScript.gameOver == false)
+        // Überprüfe, ob playerControllerScript null ist, um Fehler zu vermeiden
+        if (playerControllerScript != null && !playerControllerScript.gameOver)
         {
             Instantiate(obstaclePrefab, spawnPos, obstaclePrefab.transform.rotation);
         }

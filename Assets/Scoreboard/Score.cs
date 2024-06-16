@@ -5,12 +5,10 @@ using TMPro; // für das Text-Rendering
 
 public class Score : MonoBehaviour
 {
-    // Variablen
     public TMP_Text scoreText;
     public TMP_Text highScoreText;
-    // Zähler des Counters
+
     public float scoreCount;
-    // Highscore
     public float highScoreCount;
 
     public float pointsPerSecond;
@@ -19,19 +17,30 @@ public class Score : MonoBehaviour
 
     private PlayerController playerControllerScript;
 
-    // Start is called before the first frame update
     void Start()
     {
-        playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+        // Finde das GameObject mit dem Namen "Player"
+        GameObject playerObject = GameObject.Find("Player");
+
+        // Überprüfe, ob das GameObject gefunden wurde
+        if (playerObject != null)
+        {
+            // Hole die PlayerController-Komponente des GameObjects
+            playerControllerScript = playerObject.GetComponent<PlayerController>();
+        }
+        else
+        {
+            Debug.LogError("GameObject with name 'Player' not found.");
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (playerControllerScript.gameOver == false) { 
+        // Überprüfe, ob playerControllerScript null ist, um Fehler zu vermeiden
+        if (playerControllerScript != null && !playerControllerScript.gameOver)
+        {
             scoreCount += pointsPerSecond * Time.deltaTime;
-
-            scoreText.text = "Score: " + Mathf.Round (scoreCount); // Zählt den Score
+            scoreText.text = "Score: " + Mathf.Round(scoreCount);
         }
     }
 }

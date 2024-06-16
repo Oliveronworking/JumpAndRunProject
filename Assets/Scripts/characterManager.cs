@@ -128,6 +128,16 @@ public class characterManager : MonoBehaviour
         PlayerController playerControllerScript = currentCharacterModel.GetComponent<PlayerController>();
         if (playerControllerScript == null)
         {
+
+            Rigidbody rb = currentCharacterModel.GetComponent<Rigidbody>();
+            if (rb == null)
+            {
+                rb = currentCharacterModel.AddComponent<Rigidbody>();
+            }
+            rb.useGravity = true; 
+            rb.isKinematic = false;
+            rb.mass = 60.0f;
+
             playerControllerScript = currentCharacterModel.AddComponent<PlayerController>();
 
             // Füge AudioSource und Animator Komponenten hinzu, falls sie nicht existieren
@@ -145,7 +155,7 @@ public class characterManager : MonoBehaviour
             }
             playerControllerScript.playerAnim = animator;
 
-            playerControllerScript.jumpForce = 700.0f;
+            playerControllerScript.jumpForce = 600.0f;
             playerControllerScript.gravityModifier = 2.0f;
 
             // Lade die Partikelsysteme aus dem Resources-Ordner und instanziiere sie
@@ -208,6 +218,7 @@ public class characterManager : MonoBehaviour
                 UnityEditor.Selection.activeGameObject = currentCharacterModel;
             };
         }
+        currentCharacterModel.tag = "Player";
     }
 
     private void OnDrawGizmosSelected()
