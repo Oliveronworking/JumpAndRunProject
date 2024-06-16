@@ -11,6 +11,7 @@ public class Menu : MonoBehaviour
     public GameObject characktersCanvas;
     public GameObject Player;
     // Start is called before the first frame update
+
     public void OnPlayButton()
     {
         Player.SetActive(true);
@@ -27,18 +28,18 @@ public class Menu : MonoBehaviour
     {
             optionsCanvas.SetActive(true);
             mainCanvas.SetActive(false);
+            Player.SetActive(false);
     }
 
     public void OnCharacktersButton()
     {
         characktersCanvas.SetActive(true);
-        Player.SetActive(true);
         mainCanvas.SetActive(false);
     }
 
     void Start()
     {
-        
+        Player.SetActive(true);
     }
 
     // Update is called once per frame

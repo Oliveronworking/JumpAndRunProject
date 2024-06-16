@@ -7,11 +7,13 @@ public class optionsMenu : MonoBehaviour
 {
     public GameObject optionsCanvas;
     public GameObject mainCanvas;
+    public GameObject Player;
     // Start is called before the first frame update
     public void OnBackButton()
     {
         optionsCanvas.SetActive(false);
         mainCanvas.SetActive(true);
+        Player.SetActive(true);
     }
 
     void Start()

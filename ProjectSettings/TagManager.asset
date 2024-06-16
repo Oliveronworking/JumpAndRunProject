@@ -7,6 +7,9 @@ TagManager:
   - Obstacle
   - Ground
   - GameMusic
+  - DirtParticle1
+  - ExplosionParticle1
+  - GameOverCanvas
   layers:
   - Default
   - TransparentFX
