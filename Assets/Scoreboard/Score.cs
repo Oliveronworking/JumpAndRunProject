@@ -20,7 +20,7 @@ public class Score : MonoBehaviour
     void Start()
     {
         // Finde das GameObject mit dem Namen "Player"
-        GameObject playerObject = GameObject.Find("Player");
+        GameObject playerObject = GameObject.FindWithTag("Player");
 
         // Überprüfe, ob das GameObject gefunden wurde
         if (playerObject != null)
