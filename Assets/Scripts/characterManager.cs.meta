@@ -3,7 +3,12 @@ guid: 1b35d07978857664cbaaac6d78219032
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - characterDB: {instanceID: 0}
+  - berettaPrefab: {fileID: 7171220385959941325, guid: ccdae97e330c80a409449c668c36479c, type: 3}
+  - mainCanvas: {instanceID: 0}
+  - charactersCanvas: {instanceID: 0}
+  - player: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

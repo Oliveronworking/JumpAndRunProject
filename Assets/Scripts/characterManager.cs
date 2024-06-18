@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.SceneManagement;
 
 public class characterManager : MonoBehaviour
@@ -100,12 +99,8 @@ public class characterManager : MonoBehaviour
         }
         rb.useGravity = false; // Deaktiviere die Gravitation
         rb.isKinematic = true; // Setze das Modell auf kinematisch
-
         rb.mass = 60.0f;
-
-
     }
-
 
     void OnDestroy()
     {
@@ -128,13 +123,12 @@ public class characterManager : MonoBehaviour
         PlayerController playerControllerScript = currentCharacterModel.GetComponent<PlayerController>();
         if (playerControllerScript == null)
         {
-
             Rigidbody rb = currentCharacterModel.GetComponent<Rigidbody>();
             if (rb == null)
             {
                 rb = currentCharacterModel.AddComponent<Rigidbody>();
             }
-            rb.useGravity = true; 
+            rb.useGravity = true;
             rb.isKinematic = false;
             rb.mass = 60.0f;
 
@@ -203,7 +197,6 @@ public class characterManager : MonoBehaviour
                 boxCollider = currentCharacterModel.AddComponent<BoxCollider>();
             }
 
-
             if (boxCollider != null)
             {
                 // Anpassen der Größe des BoxColliders
@@ -213,12 +206,35 @@ public class characterManager : MonoBehaviour
 
             // Optional: Zeige den Collider im Editor an
             // Hier wird die Methode OnDrawGizmosSelected verwendet, um den Collider im Editor anzuzeigen
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.delayCall += () =>
             {
                 UnityEditor.Selection.activeGameObject = currentCharacterModel;
             };
+#endif
         }
+
         currentCharacterModel.tag = "Player";
+        GameObject createObject = GameObject.Find("weaponcreate");
+
+        if (createObject != null)
+        {
+            createweapon weaponCreateComponent = createObject.GetComponent<createweapon>();
+
+            if (weaponCreateComponent != null)
+            {
+                // Die Methode des Zielskripts aufrufen
+                weaponCreateComponent.createWeapon();
+            }
+            else
+            {
+                Debug.LogError("TargetScript wurde auf dem GameObject nicht gefunden.");
+            }
+        }
+        else
+        {
+            Debug.LogError("GameObject mit dem Namen 'weaponcreate' wurde nicht gefunden.");
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -230,29 +246,4 @@ public class characterManager : MonoBehaviour
             Gizmos.DrawWireCube(transform.position + boxCollider.center, boxCollider.size);
         }
     }
-
 }
-
-
-
-
-/*
-// Überprüfen, ob ein MeshFilter vorhanden ist
-MeshFilter meshFilter = currentCharacterModel.GetComponent<MeshFilter>();
-if (meshFilter != null)
-{
-    // Überprüfen, ob ein MeshCollider bereits vorhanden ist
-    MeshCollider meshCollider = currentCharacterModel.GetComponent<MeshCollider>();
-    if (meshCollider == null)
-    {
-        // Füge einen MeshCollider hinzu, falls keiner vorhanden ist
-        meshCollider = currentCharacterModel.AddComponent<MeshCollider>();
-    }
-
-    // Setze das Mesh des MeshColliders auf das des MeshFilters
-    meshCollider.sharedMesh = meshFilter.sharedMesh;
-
-    // Optional: Falls du willst, dass der MeshCollider Convex ist (nur für konvexe Meshes)
-    // meshCollider.convex = true;
-}
-*/
