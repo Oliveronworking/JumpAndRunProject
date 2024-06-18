@@ -207,8 +207,8 @@ public class characterManager : MonoBehaviour
             if (boxCollider != null)
             {
                 // Anpassen der Größe des BoxColliders
-                boxCollider.center = new Vector3(0f, 1.5f, 0f); // Beispiel für die Mitte des BoxColliders
-                boxCollider.size = new Vector3(1f, 2.5f, 1f);    // Beispiel für die Größe des BoxColliders
+                boxCollider.center = new Vector3(0f, 1.5f, 0f);
+                boxCollider.size = new Vector3(1f, 2.5f, 1f);
             }
 
             // Optional: Zeige den Collider im Editor an
