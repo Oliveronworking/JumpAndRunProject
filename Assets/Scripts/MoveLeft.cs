@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveLeft : MonoBehaviour
 {
     private float speed = 30;
-    private PlayerController playerControllerScript;
+    public PlayerController playerControllerScript;
     private float leftBound = -15;
 
     void Start()
@@ -28,7 +28,7 @@ public class MoveLeft : MonoBehaviour
     void Update()
     {
         // Überprüfe, ob playerControllerScript null ist, um Fehler zu vermeiden
-        if (playerControllerScript != null && !playerControllerScript.gameOver)
+        if (playerControllerScript != null && !playerControllerScript.gameOver && false)
         {
             transform.Translate(Vector3.left * Time.deltaTime * speed);
         }
@@ -37,5 +37,6 @@ public class MoveLeft : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 }
