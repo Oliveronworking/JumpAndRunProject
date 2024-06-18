@@ -28,7 +28,7 @@ public class MoveLeft : MonoBehaviour
     void Update()
     {
         // Überprüfe, ob playerControllerScript null ist, um Fehler zu vermeiden
-        if (playerControllerScript != null && !playerControllerScript.gameOver && false)
+        if (playerControllerScript != null && !playerControllerScript.gameOver)
         {
             transform.Translate(Vector3.left * Time.deltaTime * speed);
         }
