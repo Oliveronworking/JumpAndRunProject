@@ -2,15 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-
     public GameObject optionsCanvas;
     public GameObject mainCanvas;
-    public GameObject characktersCanvas;
+    public GameObject charactersCanvas;
     public GameObject Player;
+    public GameObject weaponCreateObject; // Referenz zum GameObject, das das createweapon-Skript enthält
+
+    public Button weaponSelectButton; // Referenz zum neuen Button
+
     // Start is called before the first frame update
+    void Start()
+    {
+        Player.SetActive(true);
+
+        // Initialisiere den WeaponSelectButton
+        if (weaponSelectButton != null)
+        {
+            weaponSelectButton.onClick.AddListener(OnWeaponSelectButtonClick);
+        }
+        else
+        {
+            Debug.LogError("Weapon Select Button is not assigned.");
+        }
+    }
 
     public void OnPlayButton()
     {
@@ -26,25 +44,42 @@ public class Menu : MonoBehaviour
 
     public void OnOptionsButton()
     {
-            optionsCanvas.SetActive(true);
-            mainCanvas.SetActive(false);
-            Player.SetActive(false);
+        optionsCanvas.SetActive(true);
+        mainCanvas.SetActive(false);
+        Player.SetActive(false);
     }
 
     public void OnCharacktersButton()
     {
-        characktersCanvas.SetActive(true);
+        charactersCanvas.SetActive(true);
         mainCanvas.SetActive(false);
     }
 
-    void Start()
+    void OnWeaponSelectButtonClick()
     {
-        Player.SetActive(true);
-    }
+        if (weaponCreateObject != null)
+        {
+            // Deaktiviere die Charakterauswahl und andere Canvas
+            charactersCanvas.SetActive(false);
+            mainCanvas.SetActive(false);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            // Zeige den Spieler und die Waffe an
+            Player.SetActive(true);
+
+            createweapon weaponCreateComponent = weaponCreateObject.GetComponent<createweapon>();
+
+            if (weaponCreateComponent != null)
+            {
+                weaponCreateComponent.createWeapon();
+            }
+            else
+            {
+                Debug.LogError("createweapon component not found on the assigned GameObject.");
+            }
+        }
+        else
+        {
+            Debug.LogError("weaponCreateObject is not assigned.");
+        }
     }
 }
