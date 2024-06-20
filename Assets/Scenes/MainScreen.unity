@@ -1054,7 +1054,8 @@ MonoBehaviour:
   zombiePrefabs:
   - {fileID: 4493914613880827488, guid: 6dc4cf4496348884d8ee27743ae38562, type: 3}
   spawnInterval: 2
-  spawnPosition: {x: 12.02, y: -7.24, z: 20.8}
+  spawnDistance: 10
+  minSpawnDistance: 2
 --- !u!4 &608058969
 Transform:
   m_ObjectHideFlags: 0
@@ -2478,7 +2479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Name
+  m_text: CrapGame
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
