@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-
     public GameObject optionsCanvas;
     public GameObject mainCanvas;
-    public GameObject characktersCanvas;
+    public GameObject charactersCanvas;
     public GameObject Player;
+
     // Start is called before the first frame update
+    void Start()
+    {
+        Player.SetActive(true);
+    }
 
     public void OnPlayButton()
     {
@@ -26,25 +31,20 @@ public class Menu : MonoBehaviour
 
     public void OnOptionsButton()
     {
-            optionsCanvas.SetActive(true);
-            mainCanvas.SetActive(false);
-            Player.SetActive(false);
+        optionsCanvas.SetActive(true);
+        mainCanvas.SetActive(false);
+        Player.SetActive(false);
     }
 
-    public void OnCharacktersButton()
+    public void OnCharactersButton()
     {
-        characktersCanvas.SetActive(true);
+        charactersCanvas.SetActive(true);
         mainCanvas.SetActive(false);
     }
 
-    void Start()
+    public void OnWeaponSelectButtonClick()
     {
-        Player.SetActive(true);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        mainCanvas.SetActive(false);
+        Player.SetActive(false);
     }
 }
