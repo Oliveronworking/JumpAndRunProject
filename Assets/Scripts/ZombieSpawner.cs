@@ -58,8 +58,8 @@ public class ZombieSpawner : MonoBehaviour
         rb.isKinematic = false; // Sicherstellen, dass der Rigidbody nicht kinematisch ist
 
         BoxCollider collider = zombie.AddComponent<BoxCollider>();
-        collider.center = new Vector3(0, 1.5f, 0); // BoxCollider-Einstellungen anpassen
-        collider.size = new Vector3(1, 2.5f, 1);
+        collider.center = new Vector3(0, 0.5f, 0); // BoxCollider-Einstellungen anpassen
+        collider.size = new Vector3(1, 1, 1); // Kleineren BoxCollider verwenden
 
         zombie.AddComponent<ZombieMovement>();
     }

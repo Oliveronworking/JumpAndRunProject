@@ -36,6 +36,7 @@ public class ZombieMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Collision detected with: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Player"))
         {
             // Spiel beenden
