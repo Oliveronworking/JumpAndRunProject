@@ -16,12 +16,25 @@ public class Menu : MonoBehaviour
     void Start()
     {
         Player.SetActive(true);
+        DontDestroyOnLoad(Player);
     }
 
     public void OnPlayButton()
     {
         Player.SetActive(true);
-        SceneManager.LoadScene(1);
+        Debug.Log("Loading GameScenes...");
+        SceneManager.LoadScene("GameScenes");
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "GameScenes")
+        {
+            Debug.Log("GameScenes loaded.");
+            // Füge hier Code hinzu, um sicherzustellen, dass alle notwendigen Objekte aktiviert sind
+        }
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void OnQuitButton()

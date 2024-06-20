@@ -27,6 +27,15 @@ public class PlayerController : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
         Physics.gravity *= gravityModifier;
+
+        if (playerRb == null) Debug.LogError("Rigidbody is not assigned.");
+        if (playerAnim == null) Debug.LogError("Animator is not assigned.");
+        if (playerAudio == null) Debug.LogError("AudioSource is not assigned.");
+        if (explosionParticle == null) Debug.LogError("Explosion Particle is not assigned.");
+        if (dirtParticle == null) Debug.LogError("Dirt Particle is not assigned.");
+        if (jumpSound == null) Debug.LogError("Jump Sound is not assigned.");
+        if (crashSound == null) Debug.LogError("Crash Sound is not assigned.");
+        if (GameOverCanvas == null) Debug.LogError("GameOver Canvas is not assigned.");
     }
 
     // Update is called once per frame
@@ -81,7 +90,14 @@ public class PlayerController : MonoBehaviour
             explosionParticle.Play();
             dirtParticle.Stop();
             playerAudio.PlayOneShot(crashSound, 1.0f);
-            GameOverCanvas.SetActive(true);
+            if (GameOverCanvas != null)
+            {
+                GameOverCanvas.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError("GameOver Canvas is not assigned.");
+            }
         }
     }
 }
