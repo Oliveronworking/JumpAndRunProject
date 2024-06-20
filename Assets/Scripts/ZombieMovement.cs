@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ZombieMovement : MonoBehaviour
 {
-    public float speed = 2.0f; // Geschwindigkeit des Zombies
+    public float speed = 5.0f; // Erhöhte Geschwindigkeit des Zombies
     private Transform player; // Referenz zum Spieler
+    private bool isPlayerDead = false;
 
     void Start()
     {
@@ -15,20 +16,20 @@ public class ZombieMovement : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
+        if (player != null && !isPlayerDead)
         {
             // Bewegung in Richtung des Spielers
-            Vector3 direction = (player.position - transform.position).normalized;
+            Vector3 direction = Vector3.left; // Fest nach links
             transform.Translate(direction * speed * Time.deltaTime, Space.World);
 
             // Den Zombie nach links ausrichten
-            if (direction.x < 0)
+            transform.rotation = Quaternion.Euler(0, 270, 0); // 270 Grad um Y-Achse für nach links
+
+            // Überprüfen, ob der Zombie hinter dem Spieler ist
+            if (transform.position.x < player.position.x - 5) // 5 Einheiten hinter dem Spieler als Beispiel
             {
-                transform.rotation = Quaternion.Euler(0, 270, 0); // 270 Grad um Y-Achse für nach links
-            }
-            else if (direction.x > 0)
-            {
-                transform.rotation = Quaternion.Euler(0, 90, 0); // 90 Grad um Y-Achse für nach rechts
+                Destroy(gameObject);
+                Debug.Log("Zombie destroyed: " + transform.position);
             }
         }
     }
@@ -37,8 +38,24 @@ public class ZombieMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Spiel beenden oder Schaden zufügen
+            // Spiel beenden
             Debug.Log("Game Over! Der Zombie hat den Spieler erreicht.");
+            isPlayerDead = true;
+            // Füge hier deine Game Over-Logik ein
+            GameOver();
+        }
+    }
+
+    void GameOver()
+    {
+        // Beispiel-Game Over-Logik
+        // Hier kannst du deinen Game Over-Bildschirm anzeigen oder den Spieler stoppen
+        Time.timeScale = 0; // Spiel anhalten
+        // Aktiviere Game Over-Canvas
+        GameObject gameOverCanvas = GameObject.Find("GameOverCanvas");
+        if (gameOverCanvas != null)
+        {
+            gameOverCanvas.SetActive(true);
         }
     }
 }
