@@ -10,6 +10,7 @@ public class Menu : MonoBehaviour
     public GameObject mainCanvas;
     public GameObject charactersCanvas;
     public GameObject Player;
+    public GameObject weaponCanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -46,5 +47,6 @@ public class Menu : MonoBehaviour
     {
         mainCanvas.SetActive(false);
         Player.SetActive(false);
+        weaponCanvas.SetActive(true);
     }
 }
