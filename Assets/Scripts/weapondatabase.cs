@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class weapondatabase : ScriptableObject
+public class WeaponDatabase : ScriptableObject
 {
-    public weapon[] weapon;
+    public Weapon[] weapons;
 
     public int weaponCount
-    { get { return weapon.Length; } }
+    {
+        get { return weapons.Length; }
+    }
 
-    public weapon Getweapon(int index)
-    { return weapon[index]; }
+    public Weapon GetWeapon(int index)
+    {
+        return weapons[index];
+    }
 }

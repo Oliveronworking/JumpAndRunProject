@@ -30,7 +30,7 @@ public class musicManager : MonoBehaviour
         }
 
         //set Volume
-        musicVolume = PlayerPrefs.GetFloat("volume", 0.5f); // Default to 0.5 if no value is found
+        musicVolume = PlayerPrefs.GetFloat("volume", 0.5f); 
         AudioSource.volume = musicVolume;
         if (volumeSlider != null)
         {

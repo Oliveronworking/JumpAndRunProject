@@ -190,7 +190,6 @@ public class characterManager : MonoBehaviour
             Transform playerTransform = currentCharacterModel.transform;
             playerTransform.Rotate(0f, -90f, 0f);
 
-            // Beispiel für einen BoxCollider
             BoxCollider boxCollider = currentCharacterModel.GetComponent<BoxCollider>();
             if (boxCollider == null)
             {
@@ -215,26 +214,7 @@ public class characterManager : MonoBehaviour
         }
 
         currentCharacterModel.tag = "Player";
-        GameObject createObject = GameObject.Find("weaponcreate");
-
-        if (createObject != null)
-        {
-            createweapon weaponCreateComponent = createObject.GetComponent<createweapon>();
-
-            if (weaponCreateComponent != null)
-            {
-                // Die Methode des Zielskripts aufrufen
-                weaponCreateComponent.createWeapon();
-            }
-            else
-            {
-                Debug.LogError("TargetScript wurde auf dem GameObject nicht gefunden.");
-            }
-        }
-        else
-        {
-            Debug.LogError("GameObject mit dem Namen 'weaponcreate' wurde nicht gefunden.");
-        }
+            
     }
 
     private void OnDrawGizmosSelected()
